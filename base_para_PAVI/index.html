@@ -1,5 +1,3 @@
-<?php //include 'php_default/controle_login.php'; ?>
-
 <!DOCTYPE html>
 
 <html>
@@ -15,30 +13,23 @@
     <body>
         <div class="container mycontainer">
             <header>
-                <?php
-                
-                $linkLogo = "img/logo_melhor_amigo_BLUE.png";
-                $linkInicio = "index.php";
-                $linkCaes = "paginas/lista_caes.php";
-                $linkAdocao = "paginas/adocao.php";
-                $linkApadrinhamento = "paginas/apadrinhamento.php";
-                $linkDoacoes = "paginas/doacoes.php";
-                $linkVoluntarios = "paginas/voluntarios.php";
-                $linkLogin = "paginas/login_usuario.php";
-                $linkCadastro = "paginas/cadastro_usuario.php";
-                $linkLogout = "php_default/deslogar_usuario.php";
-                $linkMeusDados = "paginas/meus_dados.php";
-
-                $linkControleCaes = "paginas/admin/controle_caes.php";
-                $linkPedidosAdocao = "paginas/admin/pedidos_adocao.php";
-                $linkPedidosVoluntario = "paginas/admin/pedidos_voluntario.php";
-                $linkControleUsuarios = "paginas/admin/controle_usuarios.php";
-
-                $linkAreaPadrinho = "paginas/padrinho/area_padrinho.php";
-                $linkAreaVoluntario = "paginas/voluntario/area_voluntario.php";
-                
-                include('php_default/header_e_footer/header.php');
-                ?>
+                <p><a href="#"><img id="logoPrincipal" alt="Logo-ONG" src="img/logo_melhor_amigo_BLUE.png"></a></p>
+                <div class="navbar navbar-inverse navbar-static-top">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Cães</a></li>
+                            <li><a href="#">Adoção</a></li>
+                            <li><a href="#">Apadrinhamento</a></li>
+                            <li><a href="#">Voluntários</a></li>
+                            <li><a href="#">Doações</a></li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Cadastre-se</a></li>
+                        </ul>
+                    </div>
+                </div>                   
             </header>
 
             <article>
@@ -46,27 +37,27 @@
                     <!-- Itens de carousel -->
                     <div class="carousel-inner">
                         <div class="active item">
-                            <a href="paginas/lista_caes.php"><img src="img/imgs_site/img_2.jpg" alt="..."></a>
+                            <a href="#"><img src="img/imgs_site/img_2.jpg" alt="..."></a>
                             <div class="carousel-caption">
-                                <a href="paginas/lista_caes.php">
+                                <a href="#">
                                     <h4>Conheça nossos cãezinhos!</h4>
                                     <p>Aqui você pode conhecer todos os nossos amigos, pode também adotá-los ou apadrinhá-los!</p>
                                 </a>
                             </div>
                         </div>
                         <div class="item">
-                            <a href="paginas/doacoes.php"><img src="img/imgs_site/img_12.jpg" alt="..."></a>
+                            <a href="#"><img src="img/imgs_site/img_12.jpg" alt="..."></a>
                             <div class="carousel-caption">
-                                <a href="paginas/doacoes.php">
+                                <a href="#">
                                     <h4>Faça uma doação!</h4>
                                     <p>Ajude-nos a cuidar de nosso amigos!</p>
                                 </a>
                             </div>
                         </div>
                         <div class="item">
-                            <a href="paginas/denuncie.php"><img src="img/imgs_site/img_10.jpg" alt="..."></a>
+                            <a href="#"><img src="img/imgs_site/img_10.jpg" alt="..."></a>
                             <div class="carousel-caption">
-                                <a href="paginas/denuncie.php">
+                                <a href="#">
                                     <h4>Denuncie maus-tratos, isso é crime!</h4>
                                     <p>Saiba mais aqui!</p>
                                 </a>
@@ -86,7 +77,7 @@
                 <div class="row-fluid">
                     <ul class="thumbnails">
                         <li class="span4">
-                            <a href="paginas/adocao.php">
+                            <a href="#">
                                 <div class="thumbnail mythumbnail">
                                     <img src="img/imgs_site/img_8.jpg" alt="">
                                     <div class="caption">
@@ -97,7 +88,7 @@
                             </a>
                         </li>
                         <li class="span4">
-                            <a href="paginas/apadrinhamento.php">
+                            <a href="#">
                                 <div class="thumbnail mythumbnail">
                                     <img src="img/imgs_site/img_1.jpg" alt="">
                                     <div class="caption">
@@ -108,7 +99,7 @@
                             </a>
                         </li>
                         <li class="span4">
-                            <a href="paginas/doacoes.php">
+                            <a href="#">
                                 <div class="thumbnail mythumbnail">
                                     <img src="img/imgs_site/img_9.jpg" alt="">
                                     <div class="caption">
@@ -123,13 +114,18 @@
             </article>
 
             <footer>
-                <?php
-                $linkSobre = "paginas/sobre_nos.php";
-                $linkLocalizacao = "paginas/localizacao.php";
-                $linkDenuncie = "paginas/denuncie.php";
-
-                include('php_default/header_e_footer/footer.php');
-                ?>
+                <div class="navbar navbar-inverse navbar-static-top">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li><a href="#">Sobre Nós</a></li>
+                            <li><a href="#">Localização</a></li>
+                            <li><a href="#">Denuncie</a></li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li><a href="mailto:faleconosco@melhoramigo.com"><i class="icon-envelope icon-white"></i> faleconosco@melhoramigo.com</a></li>
+                        </ul>
+                    </div>
+                </div>
             </footer>
         </div>
 
