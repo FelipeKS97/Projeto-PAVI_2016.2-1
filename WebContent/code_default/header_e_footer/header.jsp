@@ -11,28 +11,29 @@
         </ul>
         <!--
         <ul class="nav pull-right">
-            <?php
-            if (verificaLogin()) {
-                if (getNivel_usuario() == 0) {
+            <% /*
+            if (session.getValue("status_login") != true) {
+                if (session.getValue("nivel_usuario") == 0) {
                     //Header Adotante
-                    include ('header_usuarios/comum_adotante.php');
+                    //include ('header_usuarios/comum_adotante.php');
                 }
-                else if(getNivel_usuario() == 1){
+                else if(session.getValue("nivel_usuario") == 1){
                     //Header Padrinho
-                     include ('header_usuarios/padrinho.php');
+                	//include ('header_usuarios/padrinho.php');
                 }
-                else if(getNivel_usuario() == 2){
+                else if(session.getValue("nivel_usuario") == 2){
                     //Header Voluntário
-                     include ('header_usuarios/voluntario.php');
+                    //include ('header_usuarios/voluntario.php');
                 }
-                else if(getNivel_usuario() >= 3){
+                else if(session.getValue("nivel_usuario") >= 3){
                     //Header Administrador
-                     include ('header_usuarios/admin.php');
+                    //include ('header_usuarios/admin.php');
                 }
             } else {
-                include ('header_usuarios/anonimo.php');
-            }
-            ?>
-        </ul>-->
+                //include ('header_usuarios/anonimo.php');
+            } */
+            %>
+        </ul>
+        -->
     </div>
 </div>
