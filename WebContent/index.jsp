@@ -13,23 +13,30 @@
     <body>
         <div class="container mycontainer">
             <header>
-                <p><a href="index.jsp"><img id="logoPrincipal" alt="Logo-ONG" src="img/logo_melhor_amigo_BLUE.png"></a></p>
-                <div class="navbar navbar-inverse navbar-static-top">
-                    <div class="navbar-inner">
-                        <ul class="nav">
-                            <li><a href="index.jsp">Início</a></li>
-                            <li><a href="#">Cães</a></li>
-                            <li><a href="#">Adoção</a></li>
-                            <li><a href="#">Apadrinhamento</a></li>
-                            <li><a href="#">Voluntários</a></li>
-                            <li><a href="#">Doações</a></li>
-                        </ul>
-                        <ul class="nav pull-right">
-                            <li><a href="paginas/login_usuario.jsp">Login</a></li>
-                            <li><a href="paginas/cadastro_usuario.jsp">Cadastre-se</a></li>
-                        </ul>
-                    </div>
-                </div>                   
+                <%
+                String linkLogo = "img/logo_melhor_amigo_BLUE.png";
+                
+                String linkInicio = "index.jsp";
+                String linkCaes = "#";
+                String linkAdocao = "#";
+                String linkApadrinhamento = "#";
+                String linkDoacoes = "#";
+                String linkVoluntarios = "#";
+                String linkLogin = "#";
+                String linkCadastro = "#";
+                String linkLogout = "#";
+                String linkMeusDados = "#";
+
+                String linkControleCaes = "#";
+                String linkPedidosAdocao = "#";
+                String linkPedidosVoluntario = "#";
+                String linkControleUsuarios = "#";
+
+                String linkAreaPadrinho = "paginas/login_usuario.jsp";
+                String linkAreaVoluntario = "paginas/cadastro_usuario.jsp";
+                %>                   
+                
+                <%@ include file="code_default/header_e_footer/header.jsp" %>
             </header>
 
             <article>
@@ -114,18 +121,13 @@
             </article>
 
             <footer>
-                <div class="navbar navbar-inverse navbar-static-top">
-                    <div class="navbar-inner">
-                        <ul class="nav">
-                            <li><a href="#">Sobre Nós</a></li>
-                            <li><a href="#">Localização</a></li>
-                            <li><a href="#">Denuncie</a></li>
-                        </ul>
-                        <ul class="nav pull-right">
-                            <li><a href="mailto:faleconosco@melhoramigo.com"><i class="icon-envelope icon-white"></i> faleconosco@melhoramigo.com</a></li>
-                        </ul>
-                    </div>
-                </div>
+            	<%
+                String linkSobre = "#";
+            	String linkLocalizacao = "#";
+                String linkDenuncie = "#";
+                %>
+                
+                <%@ include file="code_default/header_e_footer/footer.jsp" %>
             </footer>
         </div>
 
