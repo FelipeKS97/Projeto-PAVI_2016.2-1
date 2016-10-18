@@ -1,3 +1,5 @@
+<%@ include file="code_default/controle_login.jsp" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -22,9 +24,9 @@
                 String linkApadrinhamento = "#";
                 String linkDoacoes = "#";
                 String linkVoluntarios = "#";
-                String linkLogin = "#";
-                String linkCadastro = "#";
-                String linkLogout = "#";
+                String linkLogin = "paginas/login_usuario.jsp";
+                String linkCadastro = "paginas/cadastro_usuario.jsp";
+                String linkLogout = "code_default/deslogar_usuario.jsp";
                 String linkMeusDados = "#";
 
                 String linkControleCaes = "#";
@@ -32,8 +34,8 @@
                 String linkPedidosVoluntario = "#";
                 String linkControleUsuarios = "#";
 
-                String linkAreaPadrinho = "paginas/login_usuario.jsp";
-                String linkAreaVoluntario = "paginas/cadastro_usuario.jsp";
+                String linkAreaPadrinho = "#";
+                String linkAreaVoluntario = "#";
                 %>                   
                 
                 <%@ include file="code_default/header_e_footer/header.jsp" %>

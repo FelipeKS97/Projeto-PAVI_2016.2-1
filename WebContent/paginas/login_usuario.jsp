@@ -23,9 +23,9 @@
                 String linkApadrinhamento = "#";
                 String linkDoacoes = "#";
                 String linkVoluntarios = "#";
-                String linkLogin = "#";
-                String linkCadastro = "#";
-                String linkLogout = "#";
+                String linkLogin = "login_usuario.jsp";
+                String linkCadastro = "cadastro_usuario.jsp";
+                String linkLogout = "../code_default/deslogar_usuario.jsp";
                 String linkMeusDados = "#";
 
                 String linkControleCaes = "#";
@@ -33,14 +33,32 @@
                 String linkPedidosVoluntario = "#";
                 String linkControleUsuarios = "#";
 
-                String linkAreaPadrinho = "login_usuario.jsp";
-                String linkAreaVoluntario = "cadastro_usuario.jsp";
+                String linkAreaPadrinho = "#";
+                String linkAreaVoluntario = "#";
+                
+                if (null != session.getValue("email_usuario")) {
+                	response.sendRedirect("../index.jsp");
+                }
                 %>                   
                 
                 <%@ include file="../code_default/header_e_footer/header.jsp" %>
             </header>
 
             <article>
+            	<%
+            	if (null != request.getParameter("cadastro")) {
+            		String cadastro = request.getParameter("cadastro");
+                    if (cadastro.equals("ok")) {
+                %>
+                	<div class='alert alert-success fade in'>
+                        <button type='button' class='close' data-dismiss='alert'>×</button>
+                        <strong>Parabéns!</strong> Seu cadastro foi criado com sucesso!
+                    </div>
+                <%
+                    }
+            	}
+            	%>
+           
                 <div class="cabecalho center">
                     <h2>Login<br/><small>Seja bem-vindo! Faça o login abaixo.</small></h2>
                 </div>
@@ -69,7 +87,7 @@
 
 
                 <div id="ajuda" class="center">
-                    <p><a href="#">Esqueci a senha</a> | <a href="#" target="_BLANK">Cadastre-se</a></p>
+                    <p><a href="#">Esqueci a senha</a> | <a href="cadastro_usuario.jsp" target="_BLANK">Cadastre-se</a></p>
                 </div>
             </article>
 

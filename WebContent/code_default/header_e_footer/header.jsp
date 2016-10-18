@@ -9,31 +9,39 @@
             <li><a href="<%= linkVoluntarios %>">Voluntários</a></li>
             <li><a href="<%= linkDoacoes %>">Doações</a></li>
         </ul>
-        <!--
         <ul class="nav pull-right">
-            <% /*
-            if (session.getValue("status_login") != true) {
-                if (session.getValue("nivel_usuario") == 0) {
+            <% 
+            if (null != session.getValue("email_usuario")) {
+                if (session.getValue("nivel_usuario").equals(0)) {
                     //Header Adotante
-                    //include ('header_usuarios/comum_adotante.php');
+            %>
+                	<%@ include file="header_usuarios/comum_adotante.jsp" %>
+            <%
                 }
-                else if(session.getValue("nivel_usuario") == 1){
+                else if(session.getValue("nivel_usuario").equals(1)){
                     //Header Padrinho
-                	//include ('header_usuarios/padrinho.php');
+            %>
+                	<%@ include file="header_usuarios/padrinho.jsp" %>
+            <%
                 }
-                else if(session.getValue("nivel_usuario") == 2){
+                else if(session.getValue("nivel_usuario").equals(2)){
                     //Header Voluntário
-                    //include ('header_usuarios/voluntario.php');
+            %>
+                	<%@ include file="header_usuarios/voluntario.jsp" %>
+            <%
                 }
-                else if(session.getValue("nivel_usuario") >= 3){
+                else if(session.getValue("nivel_usuario").equals(3) || session.getValue("nivel_usuario").equals(4)){
                     //Header Administrador
-                    //include ('header_usuarios/admin.php');
+            %>
+                	<%@ include file="header_usuarios/admin.jsp" %>
+            <%
                 }
             } else {
-                //include ('header_usuarios/anonimo.php');
-            } */
+            %>
+            	<%@ include file="header_usuarios/anonimo.jsp" %>
+            <%
+            }
             %>
         </ul>
-        -->
     </div>
 </div>

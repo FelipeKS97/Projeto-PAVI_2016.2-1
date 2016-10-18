@@ -23,9 +23,9 @@
                 String linkApadrinhamento = "#";
                 String linkDoacoes = "#";
                 String linkVoluntarios = "#";
-                String linkLogin = "#";
-                String linkCadastro = "#";
-                String linkLogout = "#";
+                String linkLogin = "login_usuario.jsp";
+                String linkCadastro = "cadastro_usuario.jsp";
+                String linkLogout = "../code_default/deslogar_usuario.jsp";
                 String linkMeusDados = "#";
 
                 String linkControleCaes = "#";
@@ -33,14 +33,18 @@
                 String linkPedidosVoluntario = "#";
                 String linkControleUsuarios = "#";
 
-                String linkAreaPadrinho = "login_usuario.jsp";
-                String linkAreaVoluntario = "cadastro_usuario.jsp";
+                String linkAreaPadrinho = "#";
+                String linkAreaVoluntario = "#";
+                
+                if (null != session.getValue("email_usuario")) {
+                	response.sendRedirect("../index.jsp");
+                }
                 %>                   
                 
                 <%@ include file="../code_default/header_e_footer/header.jsp" %>
             </header>
 
-            <article>
+            <article>            
                 <div class="cabecalho center">
                     <h2>Cadastre-se</h2>
                 </div>
@@ -145,7 +149,7 @@
                         <legend>Dados de Login</legend>
                         <div class="alert alert-info fade in">
                             <button type='button' class='close' data-dismiss='alert'>×</button>
-                            <strong>Atenção!</strong> Insira um email válido e a senha deverá ter no mínimo 8 caracteres
+                            <strong>Atenção!</strong> Insira um email válido e a senha deverá ter no mínimo 6 caracteres
                         </div>
                         <div class="campo">
                             <label class="control-label">Email: </label>

@@ -6,7 +6,7 @@ public class UsuarioVO {
 	private String senha;
 	private String nome;
 	private String cpf;
-	private String idade;
+	private int idade;
 	private String telefone;
 	private int nivelUsuario;
 	private int status_ban;
@@ -52,11 +52,11 @@ public class UsuarioVO {
 		this.cpf = cpf;
 	}
 	
-	public String getIdade() {
+	public int getIdade() {
 		return idade;
 	}
 
-	public void setIdade(String idade) {
+	public void setIdade(int idade) {
 		this.idade = idade;
 	}
 

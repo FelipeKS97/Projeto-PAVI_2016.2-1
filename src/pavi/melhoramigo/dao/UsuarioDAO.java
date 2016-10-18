@@ -1,51 +1,58 @@
 package pavi.melhoramigo.dao;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import pavi.melhoramigo.vo.UsuarioVO;
+import pavi.melhoramigo.dao.EnderecoDAO;
 
 public class UsuarioDAO {
-	public void criar (UsuarioVO usuario) {
+	private EnderecoDAO enderecoDAO = new EnderecoDAO();
+	
+	public void criar (Connection conexao, UsuarioVO usuario) throws SQLException {
+		String sql = "insert into t_usuario (email, senha, nome, cpf, idade, telefone) values (?, ?, ?, ?, ?, ?)";
+		try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+			stmt.setString(1, usuario.getEmail());
+			stmt.setString(2, usuario.getSenha());
+			stmt.setString(3, usuario.getNome());
+			stmt.setString(4, usuario.getCpf());
+			stmt.setInt(5, usuario.getIdade());
+			stmt.setString(6, usuario.getTelefone());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new SQLException("Erro: "+e.getMessage());
+		}
 		
+		usuario.setId_usuario(this.buscaUsuario(conexao, usuario.getEmail()).getId_usuario());
+		
+		this.enderecoDAO.criar(conexao, usuario.getId_usuario(), usuario.getEndereco());
 	}
 	
-	public UsuarioVO buscaUsuario (String email) {		
-		for(UsuarioVO i : this.getLista()) {
-			if (i.getEmail().equals(email)) {
-				return i;
+	public UsuarioVO buscaUsuario (Connection conexao, String email) {		
+		try (PreparedStatement stmt = conexao.prepareStatement("select * from t_usuario where email ='" + email + "'");
+				ResultSet rs = stmt.executeQuery();) {
+			if (rs.first()) {
+				UsuarioVO usuario = new UsuarioVO();
+					
+				usuario.setId_usuario(rs.getInt(1));
+				usuario.setEmail(rs.getString(2));
+				usuario.setSenha(rs.getString(3));
+				usuario.setNome(rs.getString(4));
+				usuario.setCpf(rs.getString(5));
+				usuario.setIdade(rs.getInt(6));
+				usuario.setTelefone(rs.getString(7));
+				usuario.setNivelUsuario(rs.getInt(8));
+				usuario.setStatus_ban(rs.getInt(9));
+					
+				return usuario;
 			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 		return null;
-	}
-	
-	public ArrayList<UsuarioVO> getLista() {
-		  UsuarioVO usuario1 = new UsuarioVO();
-		  usuario1.setEmail("usuario1@pavi.com");
-		  usuario1.setSenha("1234qwer");
-		  usuario1.setNome("Zé 1");
-		  usuario1.setNivelUsuario(0);
-		  usuario1.setStatus_ban(0);
-		  
-		  UsuarioVO usuario2 = new UsuarioVO();
-		  usuario2.setEmail("usuario2@pavi.com");
-		  usuario2.setSenha("1234qwer");
-		  usuario2.setNome("Zé 2");
-		  usuario2.setNivelUsuario(0);
-		  usuario2.setStatus_ban(0);
-
-		  UsuarioVO usuario3 = new UsuarioVO();
-		  usuario3.setEmail("usuario3@pavi.com");
-		  usuario3.setSenha("1234qwer");
-		  usuario3.setNome("Zé 3");
-		  usuario3.setNivelUsuario(0);
-		  usuario3.setStatus_ban(0);
-
-		  ArrayList<UsuarioVO> listaUsuarios = new ArrayList<UsuarioVO>();
-		  listaUsuarios.add(usuario1);
-		  listaUsuarios.add(usuario2);
-		  listaUsuarios.add(usuario3);
-
-		  return listaUsuarios;
 	}
 }

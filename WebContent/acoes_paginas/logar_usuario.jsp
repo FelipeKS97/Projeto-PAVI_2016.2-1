@@ -1,33 +1,31 @@
+<%@ include file="../code_default/conexao_bd.jsp" %>
+
 <%@ page
 	import="java.util.*,
-			pavi.melhoramigo.vo.UsuarioVO,
-			pavi.melhoramigo.vo.EnderecoVO,
-			pavi.melhoramigo.dao.UsuarioDAO"%>
+			pavi.melhoramigo.bo.ControleLoginBO,
+			pavi.melhoramigo.bo.LoginUsuarioBO"%>
 			
 <%
 String email = request.getParameter("email");
 String senha = request.getParameter("senha");
 
-UsuarioDAO usuarioDAO = new UsuarioDAO();
-UsuarioVO usuarioVO;
+LoginUsuarioBO login = new LoginUsuarioBO();
 
-usuarioVO = usuarioDAO.buscaUsuario(email);
-
-if (usuarioVO == null) {
+if (!login.verificaCadastro(conexao, email)) {
 %>
 	<script>
 		alert('Este endereço de email não está cadastrado!');
 		history.back();
     </script>
 <%
-} else if (!usuarioVO.getSenha().equals(senha)) {
+} else if (!login.validaSenha(senha)) {
 %>
 	<script>
 		alert('A senha está INCORRETA!');
 		history.back();
     </script>
 <%	
-} else if (usuarioVO.getStatus_ban() == 1) {
+} else if (login.isBan()) {
 %>
 	<script>
 		alert('Este usuário encontra-se BANIDO por tempo indeterminado!');
@@ -35,11 +33,16 @@ if (usuarioVO == null) {
     </script>
 <%	
 } else {
-	session.putValue("email_usuario", usuarioVO.getEmail());
-	session.putValue("id_usuario", usuarioVO.getId_usuario());
-	session.putValue("nome_usuario", usuarioVO.getNome());
-	session.putValue("nivel_usuario", usuarioVO.getNivelUsuario());
-	session.putValue("status_login", true);
+	ControleLoginBO controle_login = new ControleLoginBO();
+	
+	session.putValue("email_usuario", login.getUsuarioParaLogin().getEmail());
+	session.putValue("id_usuario", login.getUsuarioParaLogin().getId_usuario());
+	session.putValue("nome_usuario", login.getUsuarioParaLogin().getNome());
+	session.putValue("nivel_usuario", login.getUsuarioParaLogin().getNivelUsuario());
+	
+	controle_login.setUsuario_atual(login.getUsuarioParaLogin());
+	
+	session.putValue("primeiro_nome", controle_login.getPrimeiroNome_usuario());
 	
 	response.sendRedirect("../index.jsp");
 }
