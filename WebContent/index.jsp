@@ -26,7 +26,7 @@
                 String linkVoluntarios = "#";
                 String linkLogin = "paginas/login_usuario.jsp";
                 String linkCadastro = "paginas/cadastro_usuario.jsp";
-                String linkLogout = "code_default/deslogar_usuario.jsp";
+                String linkLogout = "deslogar";
                 String linkMeusDados = "#";
 
                 String linkControleCaes = "#";

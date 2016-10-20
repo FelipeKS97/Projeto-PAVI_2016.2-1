@@ -1,5 +1,5 @@
 <li id="fat-menu" class="dropdown">
-    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= session.getValue("primeiro_nome") %> <b class="caret"></b></a>
+    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">${controle_login.getPrimeiroNome_usuario()} <b class="caret"></b></a>
     <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
         <li><a tabindex="-1" href="<%= linkAreaPadrinho %>">Área do Padrinho</a></li>
         <li><a tabindex="-1" href="<%= linkMeusDados %>">Meus Dados</a></li>

@@ -25,7 +25,7 @@
                 String linkVoluntarios = "#";
                 String linkLogin = "login_usuario.jsp";
                 String linkCadastro = "cadastro_usuario.jsp";
-                String linkLogout = "../code_default/deslogar_usuario.jsp";
+                String linkLogout = "../deslogar";
                 String linkMeusDados = "#";
 
                 String linkControleCaes = "#";
@@ -36,7 +36,7 @@
                 String linkAreaPadrinho = "#";
                 String linkAreaVoluntario = "#";
                 
-                if (null != session.getValue("email_usuario")) {
+                if (null != session.getAttribute("email_usuario")) {
                 	response.sendRedirect("../index.jsp");
                 }
                 %>                   
@@ -49,7 +49,7 @@
                     <h2>Cadastre-se</h2>
                 </div>
                 
-                <form action="../acoes_paginas/cadastrar_usuario.jsp" method="post" id="formCadastro" class="form-horizontal">
+                <form action="../cadastrar" method="post" id="formCadastro" class="form-horizontal">
                     <fieldset>
                         <legend>Dados Pessoais</legend>
                         <div class="campo">

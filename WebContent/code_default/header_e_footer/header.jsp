@@ -11,26 +11,26 @@
         </ul>
         <ul class="nav pull-right">
             <% 
-            if (null != session.getValue("email_usuario")) {
-                if (session.getValue("nivel_usuario").equals(0)) {
+            if (null != session.getAttribute("email_usuario")) {
+                if (session.getAttribute("nivel_usuario").equals(0)) {
                     //Header Adotante
             %>
                 	<%@ include file="header_usuarios/comum_adotante.jsp" %>
             <%
                 }
-                else if(session.getValue("nivel_usuario").equals(1)){
+                else if(session.getAttribute("nivel_usuario").equals(1)){
                     //Header Padrinho
             %>
                 	<%@ include file="header_usuarios/padrinho.jsp" %>
             <%
                 }
-                else if(session.getValue("nivel_usuario").equals(2)){
+                else if(session.getAttribute("nivel_usuario").equals(2)){
                     //Header Voluntário
             %>
                 	<%@ include file="header_usuarios/voluntario.jsp" %>
             <%
                 }
-                else if(session.getValue("nivel_usuario").equals(3) || session.getValue("nivel_usuario").equals(4)){
+                else if(session.getAttribute("nivel_usuario").equals(3) || session.getAttribute("nivel_usuario").equals(4)){
                     //Header Administrador
             %>
                 	<%@ include file="header_usuarios/admin.jsp" %>

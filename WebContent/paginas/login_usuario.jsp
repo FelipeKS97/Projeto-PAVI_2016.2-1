@@ -25,7 +25,7 @@
                 String linkVoluntarios = "#";
                 String linkLogin = "login_usuario.jsp";
                 String linkCadastro = "cadastro_usuario.jsp";
-                String linkLogout = "../code_default/deslogar_usuario.jsp";
+                String linkLogout = "../deslogar";
                 String linkMeusDados = "#";
 
                 String linkControleCaes = "#";
@@ -36,7 +36,7 @@
                 String linkAreaPadrinho = "#";
                 String linkAreaVoluntario = "#";
                 
-                if (null != session.getValue("email_usuario")) {
+                if (null != session.getAttribute("email_usuario")) {
                 	response.sendRedirect("../index.jsp");
                 }
                 %>                   
@@ -63,7 +63,7 @@
                     <h2>Login<br/><small>Seja bem-vindo! Faça o login abaixo.</small></h2>
                 </div>
 
-                <form action="../acoes_paginas/logar_usuario.jsp" method="post" id="formLogin" class="form-horizontal">
+                <form action="../logar" method="post" id="formLogin" class="form-horizontal">
                     <fieldset>
                         <div class="control-group">
                             <label class="control-label" for="inputEmail">Email</label>

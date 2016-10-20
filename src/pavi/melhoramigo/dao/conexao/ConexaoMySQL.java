@@ -14,9 +14,12 @@ public class ConexaoMySQL implements IConexao {
 			String senha) {
 		conexao = null;
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			conexao = DriverManager.getConnection(baseDados + "://" + enderecoBanco + "/" + nomeBanco, usuario, senha);
 		} catch (CommunicationsException e) {
 			System.err.println("Erro: A comunicação com o banco de dados falhou!");
+		} catch (ClassNotFoundException  e) {
+			throw new RuntimeException(e);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
