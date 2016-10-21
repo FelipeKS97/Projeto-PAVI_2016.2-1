@@ -91,6 +91,15 @@ public class CadastroUsuarioBO {
 			return false;
 		}
 	}
+	
+	public boolean isTelefone (String telStr) {
+		try {
+			Integer.parseInt(telStr);
+			return true;
+		} catch (NumberFormatException erro) {
+			return false;
+		}
+	}
 
 	public boolean verificaEmail (Connection conexao, String email) {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();

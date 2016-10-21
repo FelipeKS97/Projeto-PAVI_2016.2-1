@@ -7,13 +7,11 @@ if (null != session.getAttribute("email_usuario")) {
 %>
 	<%@ include file="conexao_bd.jsp" %>
 <%
-	usuarioVO = usuarioDAO.buscaUsuario(conexao, (String)session.getAttribute("email_usuario"));
+	controle_login.setUsuario_atual(usuarioDAO.buscaUsuario(conexao, (String)session.getAttribute("email_usuario")));
 	
-	session.setAttribute("email_usuario", usuarioVO.getEmail());
-	session.setAttribute("id_usuario", usuarioVO.getId_usuario());
-	session.setAttribute("nome_usuario", usuarioVO.getNome());
-	session.setAttribute("nivel_usuario", usuarioVO.getNivelUsuario());
-	
-	controle_login.setUsuario_atual(usuarioVO);
+	session.setAttribute("email_usuario", controle_login.getUsuario_atual().getEmail());
+	session.setAttribute("id_usuario", controle_login.getUsuario_atual().getId_usuario());
+	session.setAttribute("nome_usuario", controle_login.getUsuario_atual().getNome());
+	session.setAttribute("nivel_usuario", controle_login.getUsuario_atual().getNivelUsuario());
 }
 %>

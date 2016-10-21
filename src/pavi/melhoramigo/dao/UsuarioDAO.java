@@ -45,6 +45,7 @@ public class UsuarioDAO {
 				usuario.setTelefone(rs.getString(7));
 				usuario.setNivelUsuario(rs.getInt(8));
 				usuario.setStatus_ban(rs.getInt(9));
+				usuario.setEndereco(enderecoDAO.buscaEndereco(conexao, usuario.getId_usuario()));
 					
 				return usuario;
 			}

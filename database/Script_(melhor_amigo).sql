@@ -189,19 +189,19 @@ INSERT INTO `t_cao` (`id_cao`, `nome`, `genero`, `idade`, `porte`, `src_imagem`)
 (23, 'Vilma', 'Fêmea', 3, 'pequeno', 'img/caes/cao_23.jpg');
 
 INSERT INTO `t_usuario` (`id_usuario`, `email`, `senha`, `nome`, `cpf`, `idade`, `telefone`, `nivel_usuario`) VALUES
-(1, 'adotante@fpin.com', '1234qwer', 'Comum/Adotante', '886.006.696-42', 18, '82999998888', 0),
-(2, 'padrinho@fpin.com', '1234qwer', 'Padrinho', '107.716.291-09', 19, '82988889999', 1),
-(3, 'voluntario@fpin.com', '1234qwer', 'Voluntário', '416.323.933-28', 20, '82999998888', 2),
-(4, 'admin@fpin.com', '1234qwer', 'Administrador Master', '284.389.873-03', 21, '82988889999', 4),
-(5, 'jose@fpin.com', '1234qwer', 'José do Santos Silva', '284.336.238-50', 30, '82912349999', 0),
-(6, 'maria@fpin.com', '1234qwer', 'Maria Medeiros da Costa', '313.637.221-23', 45, '8294558766', 0);
+(1, 'adotante@pavi.com', '1234qwer', 'Comum/Adotante', '886.006.696-42', 18, '82999998888', 0),
+(2, 'padrinho@pavi.com', '1234qwer', 'Padrinho', '107.716.291-09', 19, '82988889999', 1),
+(3, 'voluntario@pavi.com', '1234qwer', 'Voluntário', '416.323.933-28', 20, '82999998888', 2),
+(4, 'admin@pavi.com', '1234qwer', 'Administrador Master', '284.389.873-03', 21, '82988889999', 4),
+(5, 'jose@pavi.com', '1234qwer', 'José do Santos Silva', '284.336.238-50', 30, '82912349999', 0),
+(6, 'maria@pavi.com', '1234qwer', 'Maria Medeiros da Costa', '313.637.221-23', 45, '8294558766', 0);
 
 INSERT INTO `t_endereco` (`id_usuario`, `cep`, `rua`, `ncasa`, `bairro`, `complemento`, `cidade`, `estado`) VALUES
-(1, '98765-432', 'Rua do Adotante', '2016.1', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
-(2, '12345-678', 'Rua do Padrinho', '2016.1', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
-(3, '87654-321', 'Rua do Voluntário', '2016.1', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
-(4, '23456-789', 'Rua do Administrador', '2016.1', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
-(5, '19283-746', 'Rua do José', '3000', 'Centro', 'Conjunto Parque do José', 'Arapiraca', 'Alagoas'),
+(1, '98765-432', 'Rua do Adotante', '2016.2', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
+(2, '12345-678', 'Rua do Padrinho', '2016.2', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
+(3, '87654-321', 'Rua do Voluntário', '2016.2', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
+(4, '23456-789', 'Rua do Administrador', '2016.2', 'IFAL', 'Bloco de Informática', 'Maceió', 'Alagoas'),
+(5, '19283-746', 'Rua do José', '3000', 'Centro', 'Conjunto Parque do José', 'Aracaju', 'Sergipe'),
 (6, '91827-364', 'Rua da Maria', '450', 'Centro', 'Conjunto Morada da Maria', 'Recife', 'Pernambuco');
 
 INSERT INTO `t_padrinho` (`id_padrinho`, `id_cao`, `valor_mensal`, `dia_vencimento`, `modo_boleto`, `data_apadrinhamento`) VALUES

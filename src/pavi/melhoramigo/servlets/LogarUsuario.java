@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pavi.melhoramigo.bo.ControleLoginBO;
 import pavi.melhoramigo.bo.LoginUsuarioBO;
 
 @WebServlet(name = "logar_usuario", urlPatterns = { "/logarusuario", "/logar" })
@@ -44,15 +43,11 @@ public class LogarUsuario extends ServletBase implements Servlet {
 			out.println("history.back();");
 			out.println("</script>");
 		} else {
-			ControleLoginBO controle_login = new ControleLoginBO();
-
 			request.getSession().setAttribute("email_usuario", login.getUsuarioParaLogin().getEmail());
 			request.getSession().setAttribute("id_usuario", login.getUsuarioParaLogin().getId_usuario());
 			request.getSession().setAttribute("nome_usuario", login.getUsuarioParaLogin().getNome());
 			request.getSession().setAttribute("nivel_usuario", login.getUsuarioParaLogin().getNivelUsuario());
-
-			controle_login.setUsuario_atual(login.getUsuarioParaLogin());
-
+			
 			response.sendRedirect("index.jsp");
 		}
 	}

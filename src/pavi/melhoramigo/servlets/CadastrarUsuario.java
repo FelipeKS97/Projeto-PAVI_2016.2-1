@@ -46,68 +46,74 @@ public class CadastrarUsuario extends ServletBase implements Servlet {
 
 		if (cadastro.isCPF(cpf)) {
 			if (cadastro.verificaIdade(idade)) {
-				if (cadastro.isCEP(cep)) {
-					if (cadastro.verificaEmail(this.getConexao(), email)) {
-						if (cadastro.isSenha(senha1)) {
-							if (cadastro.verificaConfirmaSenha(senha1, senha2)) {
-
-								cpf = cadastro.formataCPF(cpf);
-								cep = cadastro.formataCEP(cep);
-
-								UsuarioVO novoUsuario = new UsuarioVO();
-								EnderecoVO enderecoUsuario = new EnderecoVO();
-
-								novoUsuario.setNome(nome);
-								novoUsuario.setEmail(email);
-								novoUsuario.setSenha(senha1);
-								novoUsuario.setCpf(cpf);
-								novoUsuario.setIdade(Integer.parseInt(idade));
-								novoUsuario.setTelefone(telefone);
-
-								enderecoUsuario.setCep(cep);
-								enderecoUsuario.setRua(rua);
-								enderecoUsuario.setnCasa(nCasa);
-								enderecoUsuario.setBairro(bairro);
-								enderecoUsuario.setComplemento(complemento);
-								enderecoUsuario.setCidade(cidade);
-								enderecoUsuario.setEstado(estado);
-
-								novoUsuario.setEndereco(enderecoUsuario);
-
-								UsuarioDAO usuarioDAO = new UsuarioDAO();
-
-								try {
-									usuarioDAO.criar(this.getConexao(), novoUsuario);
-								} catch (SQLException e) {
+				if (cadastro.isTelefone(telefone))
+					if (cadastro.isCEP(cep)) {
+						if (cadastro.verificaEmail(this.getConexao(), email)) {
+							if (cadastro.isSenha(senha1)) {
+								if (cadastro.verificaConfirmaSenha(senha1, senha2)) {
+	
+									cpf = cadastro.formataCPF(cpf);
+									cep = cadastro.formataCEP(cep);
+	
+									UsuarioVO novoUsuario = new UsuarioVO();
+									EnderecoVO enderecoUsuario = new EnderecoVO();
+	
+									novoUsuario.setNome(nome);
+									novoUsuario.setEmail(email);
+									novoUsuario.setSenha(senha1);
+									novoUsuario.setCpf(cpf);
+									novoUsuario.setIdade(Integer.parseInt(idade));
+									novoUsuario.setTelefone(telefone);
+	
+									enderecoUsuario.setCep(cep);
+									enderecoUsuario.setRua(rua);
+									enderecoUsuario.setnCasa(nCasa);
+									enderecoUsuario.setBairro(bairro);
+									enderecoUsuario.setComplemento(complemento);
+									enderecoUsuario.setCidade(cidade);
+									enderecoUsuario.setEstado(estado);
+	
+									novoUsuario.setEndereco(enderecoUsuario);
+	
+									UsuarioDAO usuarioDAO = new UsuarioDAO();
+	
+									try {
+										usuarioDAO.criar(this.getConexao(), novoUsuario);
+									} catch (SQLException e) {
+										out.println("<script>");
+										out.println("alert('Erro ao cadastrar o usuário: " + e.getMessage() + "');");
+										out.println("history.back();");
+										out.println("</script>");
+									}
+	
+									response.sendRedirect("paginas/login_usuario.jsp?cadastro=ok");
+	
+								} else {
 									out.println("<script>");
-									out.println("alert('Erro ao cadastrar o usuário: " + e.getMessage() + "');");
+									out.println("alert('A confirmação de senha está diferente da senha!');");
 									out.println("history.back();");
 									out.println("</script>");
 								}
-
-								response.sendRedirect("paginas/login_usuario.jsp?cadastro=ok");
-
 							} else {
 								out.println("<script>");
-								out.println("alert('A confirmação de senha está diferente da senha!');");
+								out.println("alert('A senha deve conter no mínimo 6 caracteres!');");
 								out.println("history.back();");
 								out.println("</script>");
 							}
 						} else {
 							out.println("<script>");
-							out.println("alert('A senha deve conter no mínimo 6 caracteres!');");
+							out.println("alert('Este endereço de email já está sendo usado!');");
 							out.println("history.back();");
 							out.println("</script>");
 						}
 					} else {
 						out.println("<script>");
-						out.println("alert('Este endereço de email já está sendo usado!');");
+						out.println("alert('Este CEP está incorreto!');");
 						out.println("history.back();");
 						out.println("</script>");
-					}
 				} else {
 					out.println("<script>");
-					out.println("alert('Este CEP está incorreto!');");
+					out.println("alert('Digite apenas números no telefone!');");
 					out.println("history.back();");
 					out.println("</script>");
 				}

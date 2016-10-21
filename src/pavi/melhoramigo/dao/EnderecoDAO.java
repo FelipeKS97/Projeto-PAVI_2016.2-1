@@ -2,6 +2,7 @@ package pavi.melhoramigo.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import pavi.melhoramigo.vo.EnderecoVO;
@@ -22,5 +23,29 @@ public class EnderecoDAO {
 		} catch (SQLException e) {
 			throw new SQLException("Erro: "+e.getMessage());
 		}
+	}
+	
+	public EnderecoVO buscaEndereco (Connection conexao, int id_usuario) {		
+		try (PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM t_endereco WHERE t_endereco.id_usuario = '" + id_usuario +"'");
+				ResultSet rs = stmt.executeQuery();) {
+			if (rs.first()) {
+				EnderecoVO endereco = new EnderecoVO();
+					
+				endereco.setCep(rs.getString(2));
+				endereco.setRua(rs.getString(3));
+				endereco.setnCasa(rs.getString(4));
+				endereco.setBairro(rs.getString(5));
+				endereco.setComplemento(rs.getString(6));
+				endereco.setCidade(rs.getString(7));
+				endereco.setEstado(rs.getString(8));
+					
+				return endereco;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 }
