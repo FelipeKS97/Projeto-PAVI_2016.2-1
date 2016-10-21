@@ -48,4 +48,12 @@ public class EnderecoDAO {
 		
 		return null;
 	}
+	public void updateEndereco(Connection conexao, EnderecoVO endereco, int id_usuario) throws SQLException {
+		String sql = "update t_endereco set cep='" + endereco.getCep() + "', rua='" + endereco.getRua() +"', ncasa='" + endereco.getnCasa() + "', bairro='" + endereco.getBairro() + "', complemento='" + endereco.getComplemento() + "', cidade='" + endereco.getCidade() + "', estado='" + endereco.getEstado() + "' where id_usuario='" + id_usuario + "'";
+		try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new SQLException("Erro: " + e.getMessage());
+		}
+	}
 }

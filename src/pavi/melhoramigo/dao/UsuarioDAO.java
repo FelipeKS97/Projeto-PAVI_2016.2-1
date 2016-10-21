@@ -10,8 +10,8 @@ import pavi.melhoramigo.dao.EnderecoDAO;
 
 public class UsuarioDAO {
 	private EnderecoDAO enderecoDAO = new EnderecoDAO();
-	
-	public void criar (Connection conexao, UsuarioVO usuario) throws SQLException {
+
+	public void criar(Connection conexao, UsuarioVO usuario) throws SQLException {
 		String sql = "insert into t_usuario (email, senha, nome, cpf, idade, telefone) values (?, ?, ?, ?, ?, ?)";
 		try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 			stmt.setString(1, usuario.getEmail());
@@ -22,20 +22,20 @@ public class UsuarioDAO {
 			stmt.setString(6, usuario.getTelefone());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-			throw new SQLException("Erro: "+e.getMessage());
+			throw new SQLException("Erro: " + e.getMessage());
 		}
-		
+
 		usuario.setId_usuario(this.buscaUsuario(conexao, usuario.getEmail()).getId_usuario());
-		
+
 		this.enderecoDAO.criar(conexao, usuario.getId_usuario(), usuario.getEndereco());
 	}
-	
-	public UsuarioVO buscaUsuario (Connection conexao, String email) {		
+
+	public UsuarioVO buscaUsuario(Connection conexao, String email) {
 		try (PreparedStatement stmt = conexao.prepareStatement("select * from t_usuario where email ='" + email + "'");
 				ResultSet rs = stmt.executeQuery();) {
 			if (rs.first()) {
 				UsuarioVO usuario = new UsuarioVO();
-					
+
 				usuario.setId_usuario(rs.getInt(1));
 				usuario.setEmail(rs.getString(2));
 				usuario.setSenha(rs.getString(3));
@@ -46,14 +46,26 @@ public class UsuarioDAO {
 				usuario.setNivelUsuario(rs.getInt(8));
 				usuario.setStatus_ban(rs.getInt(9));
 				usuario.setEndereco(enderecoDAO.buscaEndereco(conexao, usuario.getId_usuario()));
-					
+
 				return usuario;
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
+
+	public void updateUsuario(Connection conexao, UsuarioVO usuario) throws SQLException {
+		String sql = "update t_usuario set nome='" + usuario.getNome() + "', idade='" + usuario.getIdade()
+				+ "', telefone='" + usuario.getTelefone() + "' where id_usuario='" + usuario.getId_usuario() + "'";
+		try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new SQLException("Erro: " + e.getMessage());
+		}
+		
+		this.enderecoDAO.updateEndereco(conexao, usuario.getEndereco(), usuario.getId_usuario());
+	}
+
 }
